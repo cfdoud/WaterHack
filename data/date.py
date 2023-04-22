@@ -27,7 +27,9 @@ for file in os.listdir("."):
             date = info[0].split("-")
 
             if len(date) == 3:
-                year = "20" + str(date[2])
+                year = str(date[2])
+                if len(year) == 2:
+                    year = "20" + year
                 month = str(dateDict[date[1]])
                 day = str(date[0])
                 if len(month) < 2:
@@ -35,6 +37,7 @@ for file in os.listdir("."):
                 if len(day) < 2:
                     day = "0" + day
                 new_data = year + "-" + month + "-" + day
+                print(new_data)
 
                 for j in info[1:]:
                     new_data += "," + j
