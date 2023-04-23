@@ -1,33 +1,17 @@
-import { StyleSheet,
-        Text,
-        View 
-    } from 'react-native';
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from './Home';
+import FloodData from './FloodData';
 
-/*-------- Hook import --------*/
-import { useState } from 'react';
+const Stack = createStackNavigator();
 
+function AppNavigator() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="FloodData" component={FloodData} />
+    </Stack.Navigator>
+  );
+}
 
-
-/*-------- Variables --------*/
-
-function Water({navigation}){
-
-    return(
-        <View style = {{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>Water</Text>
-          <Text>JOJOJOJOJOJOJOJOJOJOJOJOJOJOJOJ</Text>
-        </View>
-    );
-
-    }
-export default Water;
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#1f483',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
-  
+export default AppNavigator;
