@@ -6,24 +6,70 @@ import {
   View,
   Image,
 } from 'react-native';
+import logo from '../assets/logo.png';
+import test from '../assets/waterhack_logo.png';
 
 function Home({ navigation }) {
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.logo}
-        source={require('../assets/waterhack_logo.png')}
-      />
-      <Text style={styles.title}>Welcome to WaterHack!</Text>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Flood Data')}>
-        <Text style={styles.buttonText}>Flooding Data</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Bear Creek Precipitation')}>
-        <Text style={styles.buttonText}>Bear Creek Precipitation Data</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Future')}>
-        <Text style={styles.buttonText}>Bear Creek Precipitation Future Data</Text>
-      </TouchableOpacity>
+      <View
+        style={{
+          flexDirection: 'column', 
+          paddingLeft: '20%',
+        }}> 
+            <Image 
+            style={{
+              position: 'absolute',
+              width: 80,
+              height: 80,
+              top: -25,
+              bottom: 0,
+              left: 30,
+            }}
+            source={
+              require('../assets/logo.png'
+            )} />
+            <Text
+              style={{
+              fontWeight: 'bold',
+              fontSize: 30,
+              color: 'white',
+              paddingLeft: '5%',
+            }}>
+        
+            WaterHack</Text> 
+          
+          <Text
+          style={{
+            paddingLeft: '20%',
+            fontWeight: 'bold',
+            fontSize: 25,
+            color: 'white',
+          }}>
+            by HydroHomies
+          </Text>
+          <View style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignContent: 'center',
+            paddingTop: '35%',
+
+          }}>
+            
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Flood Data')}>
+              <Text style={styles.buttonText}>Flooding Data</Text>
+            </TouchableOpacity>
+
+      
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Bear Creek Precipitation')}>
+              <Text style={styles.buttonText}>Bear Creek Precipitation Data</Text>
+            </TouchableOpacity>
+        
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Future')}>
+              <Text style={styles.buttonText}>Bear Creek Precipitation Future Data</Text>
+            </TouchableOpacity>
+        </View> 
+      </View>
     </View>
   );
 }
@@ -34,9 +80,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1A1A1A',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
+    paddingTop: '30%',
+    
   },
   logo: {
     width: 200,
@@ -67,6 +112,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 5,
     elevation: 5,
+    borderColor: '#00bfff',
+    borderWidth: 3,
   },
   buttonText: {
     color: '#fff',
