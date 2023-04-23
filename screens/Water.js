@@ -1,32 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
-import firestore from '@react-native-firebase/firestore';
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from './Home';
+import FloodData from './FloodData';
 
-const FloodData = () => {
-  const [data, setData] = useState([]);
+const Stack = createStackNavigator();
 
-  useEffect(() => {
-    const unsubscribe = firestore()
-      .collection('Flood')
-      .onSnapshot((snapshot) => {
-        const newData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setData(newData);
-      });
-
-    // Unsubscribe from the listener when component unmounts
-    return () => unsubscribe();
-  }, []);
-
+function AppNavigator() {
   return (
-    <View>
-      {data.map((item) => (
-        <Text key={item.id}>{JSON.stringify(item)}</Text>
-      ))}
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="FloodData" component={FloodData} />
+    </Stack.Navigator>
   );
-};
+}
 
-export default FloodData;
+export default AppNavigator;
