@@ -3,10 +3,17 @@ import { StyleSheet, Text, View } from 'react-native';
 import supabase from "../db/supabaseClient";
 
 async function getAttendee() {
-    const data = await supabase
-    .from('flow')
-    .select('692');
-    }
+
+    const date = await supabase.from("flow").select("dadate");
+    const stage_height = await supabase.from("flow").select("stage_height");
+    const stream_flow = await supabase.from("flow").select("stream_flow");
+
+    console.log("date", date);
+    console.log("shit", stage_height);
+    console.log("poo", stream_flow);
+
+}
+
 
 
 function FloodData() {
