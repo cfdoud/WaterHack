@@ -48,10 +48,11 @@ function Home({ navigation }) {
           }}>
             by HydroHomies
           </Text>
+          </View>
           <View style={{
             justifyContent: 'center',
             alignItems: 'center',
-            alignContent: 'center',
+            alignSelf: 'center',
             paddingTop: '35%',
 
           }}>
@@ -69,7 +70,7 @@ function Home({ navigation }) {
               <Text style={styles.buttonText}>Bear Creek Precipitation Future Data</Text>
             </TouchableOpacity>
         </View> 
-      </View>
+      
     </View>
   );
 }
