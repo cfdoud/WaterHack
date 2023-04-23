@@ -1,33 +1,32 @@
-import { StyleSheet,
-        Text,
-        View 
-    } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 
-/*-------- Hook import --------*/
-import { useState } from 'react';
+const FloodData = () => {
+  const [data, setData] = useState([]);
 
+  useEffect(() => {
+    const unsubscribe = firestore()
+      .collection('Flood')
+      .onSnapshot((snapshot) => {
+        const newData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setData(newData);
+      });
 
+    // Unsubscribe from the listener when component unmounts
+    return () => unsubscribe();
+  }, []);
 
-/*-------- Variables --------*/
+  return (
+    <View>
+      {data.map((item) => (
+        <Text key={item.id}>{JSON.stringify(item)}</Text>
+      ))}
+    </View>
+  );
+};
 
-function Water({navigation}){
-
-    return(
-        <View style = {{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>Water</Text>
-          <Text>JOJOJOJOJOJOJOJOJOJOJOJOJOJOJOJ</Text>
-        </View>
-    );
-
-    }
-export default Water;
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#1f483',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
-  
+export default FloodData;
