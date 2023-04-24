@@ -58,10 +58,10 @@ function Home({ navigation }) {
           }}>
             
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Flood Data')}>
-              <Text style={styles.buttonText}>Flooding Data</Text>
+              <Text style={styles.buttonText}>BC Datas</Text>
             </TouchableOpacity>
 
-      
+      ZAq
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Bear Creek Precipitation')}>
               <Text style={styles.buttonText}>Bear Creek Precipitation Data</Text>
             </TouchableOpacity>
